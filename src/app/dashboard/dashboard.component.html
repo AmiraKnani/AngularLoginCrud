@@ -1,2 +1,29 @@
-<h3> Welcome to the Dashboard!</h3>
-<button (click)="logout()" class="btn btn-danger ">Logout</button>
+<h3>Welcome to the Dashboard!</h3>
+<button (click)="logout()" class="btn btn-danger">Logout</button>
+
+
+
+<!-- Table -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">User ID</th>
+      <th scope="col">User Email</th>
+      <th scope="col">User Password</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.password}}</td>
+      <td>
+        <button class="btn btn-warning" (click)="openUpdateUserModal(user)">Update</button>
+        <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- Add User Button -->
+<button class="btn btn-primary mb-3" (click)="openAddUserModal()">Add User</button>

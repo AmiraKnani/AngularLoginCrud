@@ -4,6 +4,7 @@ import { LoginRequest } from '../shared/interfaces';
 import { Observable, tap } from 'rxjs';
 import { LOCALSTORAGE_LOGIN_ACCESS_TOKEN } from '../app.module';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,4 +33,20 @@ export class AuthService {
   isLoggedIn() {
     return !!localStorage.getItem(LOCALSTORAGE_LOGIN_ACCESS_TOKEN)
   }
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${AuthService.API_URL}/users`);
+  }
+
+  addUser(user: any): Observable<any> {
+    return this.http.post<any>(`${AuthService.API_URL}/users`, user);
+  }
+
+  updateUser(user: any): Observable<any> {
+    return this.http.put<any>(`${AuthService.API_URL}/users/${user.id}`, user);
+  }
+
+  deleteUser(userId: number): Observable<any> {
+    return this.http.delete<any>(`${AuthService.API_URL}/users/${userId}`);
+  }
 }
+

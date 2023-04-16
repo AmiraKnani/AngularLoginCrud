@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Add User</h2>
+<mat-dialog-content>
+  <form [formGroup]="addUserForm">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput placeholder="Email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput placeholder="Password" type="password">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="btn btn-primary mb-3" (click)="onCancel()">Cancel</button> 
+    <button mat-button class="btn btn-primary mb-3" [disabled]="addUserForm.invalid" (click)="onAddUser()">Add</button>    
+</mat-dialog-actions>
